@@ -68,8 +68,10 @@ ActiveRecord::Schema.define(version: 2021_06_15_191625) do
   create_table "notes", force: :cascade do |t|
     t.bigint "course_id", null: false
     t.bigint "user_id", null: false
-    t.string "content"
-    t.string "upload_url"
+    t.datetime "class_date", null: false
+    t.string "title", null: false
+    t.text "content"
+    t.string "upload_url", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["course_id"], name: "index_notes_on_course_id"

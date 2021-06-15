@@ -15,5 +15,11 @@
   <%= @course.code %>
 </p>
 
+<%= link_to "add class notes", new_course_note_path(course_id: @course.id) %>
+<%= link_to "add class material", new_course_class_material_path(@course) %>
+<%= link_to "add class material", new_course_class_material_path(@course) %>
+<%= link_to "add reading", new_course_reading_path(@course) %>
+
+
 <%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>

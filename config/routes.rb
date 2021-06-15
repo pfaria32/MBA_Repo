@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  resources :notes
-  resources :class_materials
-  resources :readings
-  resources :courses
+  root to: 'pages#home'
+
+  resources :courses do
+    resources :readings, :class_materials, :notes
+  end
+
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: 'pages#home'
 
 end

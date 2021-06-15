@@ -22,6 +22,7 @@ class NotesController < ApplicationController
   # POST /notes
   def create
     @note = Note.new(note_params)
+    @note.user_id = current_user.id
 
     if @note.save
       redirect_to @note, notice: 'Note was successfully created.'
@@ -53,6 +54,6 @@ class NotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def note_params
-      params.require(:note).permit(:content, :content_url, uploads: [])
+      params.require(:note).permit(:class_date, :title, :content, :upload_url, uploads: [])
     end
 end
