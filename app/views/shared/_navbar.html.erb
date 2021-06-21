@@ -20,10 +20,10 @@
       <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#"><span class="sr-only"><%= link_to "login", new_user_session_path %></span></a>
+              <a><span class="sr-only"><%= link_to "login", new_user_session_path, class:"nav-link" %></span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><%= link_to "sign-up", new_user_registration_path %></a>
+              <a><%= link_to "sign-up", new_user_registration_path, class:"nav-link" %></a>
             </li>
           </ul>
         </div>
