@@ -1,31 +1,20 @@
-<p id="notice"><%= notice %></p>
+<h1>Courses:</h1>
 
-<h1>Courses</h1>
+<ul class="nav justify-content-lefts mt-2">
+  <button type="button" class="btn btn-light" style="display: flex; justify-content: left;"><%= link_to 'Add New', new_course_path %></button>
+</ul>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Professor</th>
-      <th>Code</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container">
 
-  <tbody>
-    <% @courses.each do |course| %>
-      <tr>
-        <td><%= course.name %></td>
-        <td><%= course.professor %></td>
-        <td><%= course.code %></td>
-        <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% if @courses.nil? %>
+    <p>There are no registered classes yet.</p>
 
-<br>
+  <% else %>
+    <div style="display: flex; flex-direction: row; justify-content: space-around;">
+      <% @courses.each do |course| %>
+        <%= render 'shared/courseCard', course: course %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
-<%= link_to 'New Course', new_course_path %>

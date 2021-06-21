@@ -1,8 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @course.name %>
+<h1><%= @course.name %></h1>
+<p><strong><%= @course.code %></strong></p>
 </p>
 
 <p>
@@ -10,10 +7,7 @@
   <%= @course.professor %>
 </p>
 
-<p>
-  <strong>Code:</strong>
-  <%= @course.code %>
-</p>
+
 
 <%= link_to "add class notes", new_course_note_path(course_id: @course.id) %>
 <%= link_to "add class material", new_course_class_material_path(@course) %>
