@@ -8,7 +8,10 @@ class CoursesController < ApplicationController
 
   # GET /courses/1
   def show
-  end
+    @class_materials = Class_material.where(course_id: @course.id)
+    @notes = Note.where(course_id: @course.id)
+    @readings = Reading.where(course_id: @course.id)
+    @submissions = @class_materials + @notes + @readings
 
   # GET /courses/new
   def new

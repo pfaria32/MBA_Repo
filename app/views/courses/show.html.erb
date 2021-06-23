@@ -15,11 +15,12 @@
   <%= @course.professor %>
 </p>
 
-<div class="btn-group" role="group" aria-label="Basic outlined example">
-  <button type="button" class="btn btn-outline-primary"><%= link_to "add course material", new_course_class_material_path(@course) %></button>
+<div class="btn-group mb-3" role="group" aria-label="Basic outlined example">
+  <button type="button" class="btn btn-outline-primary"><%= link_to "add course materials", new_course_class_material_path(@course) %></button>
   <button type="button" class="btn btn-outline-primary"><%= link_to "add course notes", new_course_note_path(course_id: @course.id) %></button>
   <button type="button" class="btn btn-outline-primary"><%= link_to "add reading", new_course_reading_path(@course) %></button>
 </div>
+<%= render 'courseNav', course: @course %>
 
 
 
