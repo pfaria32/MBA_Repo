@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :courses do
-    resources :readings, :class_materials, :notes
+    resources :lectures do
+      resources :readings, :class_materials, :notes
+    end
   end
 
   devise_for :users

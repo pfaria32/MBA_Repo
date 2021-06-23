@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_21_170847) do
+ActiveRecord::Schema.define(version: 2021_06_15_191625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,13 +44,14 @@ ActiveRecord::Schema.define(version: 2021_06_21_170847) do
   end
 
   create_table "class_materials", force: :cascade do |t|
-    t.bigint "course_id", null: false
+    t.bigint "lecture_id", null: false
     t.bigint "user_id", null: false
+    t.datetime "class_date", null: false
     t.string "name"
     t.string "upload_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["course_id"], name: "index_class_materials_on_course_id"
+    t.index ["lecture_id"], name: "index_class_materials_on_lecture_id"
     t.index ["user_id"], name: "index_class_materials_on_user_id"
   end
 
@@ -62,13 +63,22 @@ ActiveRecord::Schema.define(version: 2021_06_21_170847) do
     t.string "picture_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "ancestry"
-    t.index ["ancestry"], name: "index_courses_on_ancestry"
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
-  create_table "notes", force: :cascade do |t|
+  create_table "lectures", force: :cascade do |t|
     t.bigint "course_id", null: false
+    t.date "lecture_date", null: false
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_lectures_on_course_id"
+    t.index ["user_id"], name: "index_lectures_on_user_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.bigint "lecture_id", null: false
     t.bigint "user_id", null: false
     t.datetime "class_date", null: false
     t.string "title", null: false
@@ -76,7 +86,7 @@ ActiveRecord::Schema.define(version: 2021_06_21_170847) do
     t.string "upload_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["course_id"], name: "index_notes_on_course_id"
+    t.index ["lecture_id"], name: "index_notes_on_lecture_id"
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
@@ -86,13 +96,14 @@ ActiveRecord::Schema.define(version: 2021_06_21_170847) do
   end
 
   create_table "readings", force: :cascade do |t|
-    t.bigint "course_id", null: false
+    t.bigint "lecture_id", null: false
     t.bigint "user_id", null: false
+    t.datetime "class_date", null: false
     t.string "name"
     t.string "upload_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["course_id"], name: "index_readings_on_course_id"
+    t.index ["lecture_id"], name: "index_readings_on_lecture_id"
     t.index ["user_id"], name: "index_readings_on_user_id"
   end
 
@@ -118,11 +129,13 @@ ActiveRecord::Schema.define(version: 2021_06_21_170847) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "class_materials", "courses"
+  add_foreign_key "class_materials", "lectures"
   add_foreign_key "class_materials", "users"
   add_foreign_key "courses", "users"
-  add_foreign_key "notes", "courses"
+  add_foreign_key "lectures", "courses"
+  add_foreign_key "lectures", "users"
+  add_foreign_key "notes", "lectures"
   add_foreign_key "notes", "users"
-  add_foreign_key "readings", "courses"
+  add_foreign_key "readings", "lectures"
   add_foreign_key "readings", "users"
 end
