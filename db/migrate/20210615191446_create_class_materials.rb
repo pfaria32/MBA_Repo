@@ -3,7 +3,6 @@ class CreateClassMaterials < ActiveRecord::Migration[6.1]
     create_table :class_materials do |t|
       t.references :lecture, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
-      t.datetime :class_date, null: false
       t.string :name
       t.string :upload_url
 

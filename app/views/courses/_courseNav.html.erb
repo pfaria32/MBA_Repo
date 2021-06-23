@@ -1,6 +1,6 @@
 <% @lectures.each do |lecture| %>
   <nav id="navbar-example3" class="navbar navbar-light bg-light flex-column align-items-stretch p-3">
-    <a class="navbar-brand" ><%= "#{lecture.name} - #{lecture.lecture_date}" %></a>
+    <a class="navbar-brand" ><strong><%= "#{lecture.name} - #{lecture.lecture_date}" %></strong></a>
     <div class="btn-group mb-3" role="group" aria-label="Basic outlined example">
       <button type="button" class="btn btn-outline-primary"><%= link_to "add lecture notes",  new_course_lecture_note_path(course_id: @course.id, lecture_id: lecture.id) %></button>
       <button type="button" class="btn btn-outline-primary"><%= link_to "add lecture reading",  new_course_lecture_reading_path(course_id: @course.id, lecture_id: lecture.id) %></button>

@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2021_06_15_191625) do
   create_table "class_materials", force: :cascade do |t|
     t.bigint "lecture_id", null: false
     t.bigint "user_id", null: false
-    t.datetime "class_date", null: false
     t.string "name"
     t.string "upload_url"
     t.datetime "created_at", precision: 6, null: false
@@ -80,7 +79,6 @@ ActiveRecord::Schema.define(version: 2021_06_15_191625) do
   create_table "notes", force: :cascade do |t|
     t.bigint "lecture_id", null: false
     t.bigint "user_id", null: false
-    t.datetime "class_date", null: false
     t.string "title", null: false
     t.text "content"
     t.string "upload_url"
@@ -98,7 +96,6 @@ ActiveRecord::Schema.define(version: 2021_06_15_191625) do
   create_table "readings", force: :cascade do |t|
     t.bigint "lecture_id", null: false
     t.bigint "user_id", null: false
-    t.datetime "class_date", null: false
     t.string "name"
     t.string "upload_url"
     t.datetime "created_at", precision: 6, null: false
