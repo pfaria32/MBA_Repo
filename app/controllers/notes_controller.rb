@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: [:show, :edit, :update, :destroy]
+  before_action :set_note, only: [:show, :edit, :update, :destroy, :download_file]
 
   # GET /notes
   def index
@@ -45,6 +45,10 @@ class NotesController < ApplicationController
   def destroy
     @note.destroy
     redirect_to notes_url, notice: 'Note was successfully destroyed.'
+  end
+
+  def download_file
+    # send_file(@note.uploads)
   end
 
   private

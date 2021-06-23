@@ -5,8 +5,8 @@
     <h6 class="card-subtitle mb-2 text-muted"><%= "submitted by: #{noteuser.email} on #{note.created_at}"  %></h6>
     <h6 class="card-subtitle mb-2 text-muted"></h6>
     <p class="card-text"><%= note.content %></p>
-    <a href="#" class="card-link"></a>
-    <a href="#" class="card-link"></a>
+    <a class="card-link"><%= link_to  %></a>
+    <!-- Aqui vai o link para download do arquivo --> <a href="#" class="card-link"></a>  -->
     <% if note.user_id == current_user.id %>
       <a href="#" class="card-link"></a>
     <% end %>
