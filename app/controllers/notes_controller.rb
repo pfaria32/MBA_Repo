@@ -26,7 +26,7 @@ class NotesController < ApplicationController
     @note.lecture_id = params[:lecture_id]
 
     if @note.save
-      redirect_to @note, notice: 'Note was successfully created.'
+      redirect_to course_path(params[:course_id]), notice: 'Note was successfully created.'
     else
       render :new
     end

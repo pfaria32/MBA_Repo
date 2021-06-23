@@ -5,6 +5,18 @@
       <button type="button" class="btn btn-outline-primary"><%= link_to "add lecture notes",  new_course_lecture_note_path(course_id: @course.id, lecture_id: lecture.id) %></button>
       <button type="button" class="btn btn-outline-primary"><%= link_to "add lecture reading",  new_course_lecture_reading_path(course_id: @course.id, lecture_id: lecture.id) %></button>
     </div>
+    <% if lecture.notes.first.nil? && lecture.readings.first.nil? %>
+      <p>No notes or readings were submitted for this lecture.</p>
+    <% else %>
+      <% unless lecture.notes.first.nil? %>
+        <% lecture.notes.each do |note| %>
+          <%= render 'shared/noteCard', note: note %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+
+
     <nav class="nav nav-pills flex-column">
       <a class="nav-link" href="#item-1">Item 1</a>
       <nav class="nav nav-pills flex-column">
