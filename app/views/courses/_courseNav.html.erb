@@ -10,7 +10,7 @@
     <% else %>
       <% unless lecture.notes.first.nil? %>
         <% lecture.notes.each do |note| %>
-          <%= render 'shared/noteCard', note: note %>
+          <%= render 'shared/noteCard', note: note, lecture: lecture, course: @course %>
         <% end %>
       <% end %>
     <% end %>

@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_action :set_note, only: [:show, :edit, :update, :destroy, :download_file]
+  before_action :set_note, only: [:show, :edit, :update]
 
   # GET /notes
   def index
@@ -43,12 +43,17 @@ class NotesController < ApplicationController
 
   # DELETE /notes/1
   def destroy
+    @note = Note.find(params[:note_id])
+    if @note.upload.attached
+      @note.upload.purge
+    end
     @note.destroy
-    redirect_to notes_url, notice: 'Note was successfully destroyed.'
+    redirect_to course_path(params[:course_id]), notice: 'Note was successfully destroyed.'
   end
 
   def download_file
-    # send_file(@note.uploads)
+    @note = Note.find(params[:note_id])
+    url_for(@upload)
   end
 
   private
@@ -59,6 +64,6 @@ class NotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def note_params
-      params.require(:note).permit(:title, :content, :upload_url, uploads: [])
+      params.require(:note).permit(:title, :content, :upload_url, :uploads)
     end
 end
