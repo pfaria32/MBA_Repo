@@ -4,7 +4,6 @@ class CreateReadings < ActiveRecord::Migration[6.1]
       t.references :lecture, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
       t.string :name
-      t.string :upload_url
 
       t.timestamps
     end

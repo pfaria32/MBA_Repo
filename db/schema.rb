@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 2021_06_15_191625) do
     t.bigint "lecture_id", null: false
     t.bigint "user_id", null: false
     t.string "name"
-    t.string "upload_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["lecture_id"], name: "index_class_materials_on_lecture_id"
@@ -81,7 +80,6 @@ ActiveRecord::Schema.define(version: 2021_06_15_191625) do
     t.bigint "user_id", null: false
     t.string "title", null: false
     t.text "content"
-    t.string "upload_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["lecture_id"], name: "index_notes_on_lecture_id"
@@ -97,7 +95,6 @@ ActiveRecord::Schema.define(version: 2021_06_15_191625) do
     t.bigint "lecture_id", null: false
     t.bigint "user_id", null: false
     t.string "name"
-    t.string "upload_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["lecture_id"], name: "index_readings_on_lecture_id"

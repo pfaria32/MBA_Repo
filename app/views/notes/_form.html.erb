@@ -6,7 +6,7 @@
   <div class="form-inputs">
     <%= f.input :title, required: true, label: "Title:" %>
     <%= f.input :content, label: "care to give a brief description or make any comments?" %>
-    <%= f.input :upload_url, as: :file, required: true, label: "upload your notes!" %>
+    <%= f.file_field :upload, required: true, label: "upload your notes!" %>
   </div>
 
   <div class="form-actions">

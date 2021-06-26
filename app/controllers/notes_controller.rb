@@ -44,7 +44,7 @@ class NotesController < ApplicationController
   # DELETE /notes/1
   def destroy
     @note = Note.find(params[:note_id])
-    if @note.upload.attached
+    if @note.upload.attached?
       @note.upload.purge
     end
     @note.destroy
@@ -64,6 +64,6 @@ class NotesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def note_params
-      params.require(:note).permit(:title, :content, :upload_url, :uploads)
+      params.require(:note).permit(:title, :content, :upload)
     end
 end
