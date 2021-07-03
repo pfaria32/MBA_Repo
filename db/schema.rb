@@ -86,11 +86,6 @@ ActiveRecord::Schema.define(version: 2021_06_15_191625) do
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
-  create_table "profiles", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"

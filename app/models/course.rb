@@ -4,4 +4,5 @@ class Course < ApplicationRecord
   has_many :readings
   has_many :class_materials
   has_one_attached :picture
+  validates :name, presence: true
 end
