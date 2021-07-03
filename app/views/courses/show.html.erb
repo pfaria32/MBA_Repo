@@ -1,22 +1,15 @@
-<div style="display: flex; justify-content: flex-end;">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a><%= link_to 'Courses', courses_path %></a></li>
-      <li class="breadcrumb-item active" aria-current="page"><%= @course.code %></li>
-    </ol>
-  </nav>
-</div>
-<h1><%= @course.name %></h1>
-<% if current_user.id == @course.user_id %>
-  <%= link_to 'Edit', edit_course_path(@course) %>
-<% end %>
-<p><strong><%= @course.code %></strong></p>
-<strong>Professor:</strong>
-  <%= @course.professor %>
-</p>
+<%= render 'courseBreadCrumb', course: @course %>
+<div style="display: flex; flex-direction: column; align-items: center;">
+  <h1 style='text-align: center;'><%= @course.name %></h1>
+  <% if current_user.id == @course.user_id %>
+    <%= link_to 'Edit', edit_course_path(@course) %>
+  <% end %>
+  <p style='text-align: center;'><strong><%= @course.code %></strong></p>
+  <p style='text-align: center;'><strong>Professor:</strong><%= " #{@course.professor}" %></p>
 
-<div class="btn-group mb-3" role="group" aria-label="Basic outlined example">
-  <button type="button" class="btn btn-outline-primary"><%= link_to "Add Lecture",  new_course_lecture_path(@course) %></button>
+    <div class="btn-group mb-3" role="group" aria-label="Basic outlined example" >
+        <button type="button" class="btn btn-outline-primary"><%= link_to "Add Lecture",  new_course_lecture_path(@course) %></button>
+    </div>
 </div>
 
 <% unless @lectures.nil? %>
