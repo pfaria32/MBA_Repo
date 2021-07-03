@@ -9,6 +9,7 @@ class CoursesController < ApplicationController
   # GET /courses/1
   def show
     @lectures = Lecture.where(course_id: @course.id)
+    @lecture_count = 0
     # class_materials = ClassMaterial.where(course_id: @course.id)
     # @class_materials_sorted = class_materials.sort_by &:
     # @notes = Note.where(course_id: @course.id)

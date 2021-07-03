@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 2021_06_15_191625) do
     t.string "name"
     t.string "professor"
     t.string "code"
+    t.text "description"
     t.bigint "user_id", null: false
-    t.string "picture_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_courses_on_user_id"
@@ -91,16 +91,6 @@ ActiveRecord::Schema.define(version: 2021_06_15_191625) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "readings", force: :cascade do |t|
-    t.bigint "lecture_id", null: false
-    t.bigint "user_id", null: false
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["lecture_id"], name: "index_readings_on_lecture_id"
-    t.index ["user_id"], name: "index_readings_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -130,6 +120,4 @@ ActiveRecord::Schema.define(version: 2021_06_15_191625) do
   add_foreign_key "lectures", "users"
   add_foreign_key "notes", "lectures"
   add_foreign_key "notes", "users"
-  add_foreign_key "readings", "lectures"
-  add_foreign_key "readings", "users"
 end

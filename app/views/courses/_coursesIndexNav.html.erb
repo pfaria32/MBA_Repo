@@ -1,0 +1,5 @@
+<nav class="navbar navbar-light bg-light flex-column align-items p-3">
+  <% @courses.each do |course| %>
+    <%= render 'shared/courseCard', course: course %>
+  <% end %>
+</nav>

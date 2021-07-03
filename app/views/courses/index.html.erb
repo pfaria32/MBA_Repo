@@ -1,19 +1,14 @@
-<h1>Courses:</h1>
-
-<ul class="nav justify-content-lefts mt-2">
-  <button type="button" class="btn btn-light" style="display: flex; justify-content: left;"><%= link_to 'Add New', new_course_path %></button>
-</ul>
-<div class="container">
-
-  <% if @courses.nil? %>
-    <p>There are no registered classes yet.</p>
-
-  <% else %>
-    <div style="display: flex; flex-direction: row; justify-content: space-around;">
-      <% @courses.each do |course| %>
-        <%= render 'shared/courseCard', course: course %>
-      <% end %>
-    </div>
-  <% end %>
+<div style="display: flex; flex-direction: column; align-items: center;">
+  <h1 style='text-align: center;'>Courses</h1>
+  <div class="btn-group mb-3 mt-3" role="group" aria-label="Basic outlined example" >
+      <button type="button" class="btn btn-outline-primary"><%= link_to "Add Course",  new_course_path %></button>
+  </div>
 </div>
+
+<% unless @courses.first.nil?%>
+  <%= render 'coursesIndexNav', courses: @courses %>
+<% else %>
+  <p></p>
+  <p style="text-align: center;">So far, no one has added a course. Be the one to add the first!</p>
+<% end %>
 

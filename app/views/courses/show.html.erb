@@ -6,13 +6,12 @@
   <% end %>
   <p style='text-align: center;'><strong><%= @course.code %></strong></p>
   <p style='text-align: center;'><strong>Professor:</strong><%= " #{@course.professor}" %></p>
-
-    <div class="btn-group mb-3" role="group" aria-label="Basic outlined example" >
-        <button type="button" class="btn btn-outline-primary"><%= link_to "Add Lecture",  new_course_lecture_path(@course) %></button>
-    </div>
+  <div class="btn-group mb-3" role="group" aria-label="Basic outlined example" >
+      <button type="button" class="btn btn-outline-primary"><%= link_to "Add Lecture",  new_course_lecture_path(@course) %></button>
+  </div>
 </div>
 
-<% unless @lectures.nil? %>
+<% unless @lectures.first.nil? %>
   <%= render 'courseNav', course: @course %>
 <% end %>
 

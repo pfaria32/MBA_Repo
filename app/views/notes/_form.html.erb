@@ -1,15 +1,16 @@
+  <%= simple_form_for(@note, :url => {:action => "create"}) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<%= simple_form_for(@note, :url => {:action => "create"}) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div class="form-inputs">
+      <%= f.input :title, required: true, label: "Title:" %>
+      <%= f.input :content, label: "brief description or comments?" %>
+      <div class="form-actions mt-3">
+        <%= f.file_field :upload, required: true, label: "upload your notes!" %>
+      </div>
+    </div>
 
-  <div class="form-inputs">
-    <%= f.input :title, required: true, label: "Title:" %>
-    <%= f.input :content, label: "care to give a brief description or make any comments?" %>
-    <%= f.file_field :upload, required: true, label: "upload your notes!" %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+    <div class="form-actions mt-3">
+      <%= f.button :submit, label: "submit" %>
+    </div>
+  <% end %>

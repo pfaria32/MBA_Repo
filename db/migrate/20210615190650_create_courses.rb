@@ -4,9 +4,8 @@ class CreateCourses < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :professor
       t.string :code
+      t.text :description
       t.references :user, null: false, foreign_key: true
-      t.string :picture_url
-
       t.timestamps
     end
   end
