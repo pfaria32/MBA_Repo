@@ -18,13 +18,12 @@
         </video>
       <% else %>
         <% if note.upload.representable? %>
-          <%= image_tag note.upload.representation(resize_to_limit: [100, 100]) %>
+          <%=link_to image_tag( note.upload.preview( resize_to_refit: [100, 100] ) ), rails_blob_path(note.upload, disposition: "attachment") %>
         <% else %>
           <%= link_to "download",  rails_blob_path(note.upload, disposition: "attachment") %>
         <% end %>
       <% end %>
     <% end %>
-    <!-- Aqui vai o link para download do arquivo --> <a href="#" class="card-link"></a>  -->
     <% if note.user_id == current_user.id %>
       <a class="card-link"><%= link_to 'delete note', course_lecture_note_destroy_path(course_id: @course.id, lecture_id: lecture.id, note_id: note.id ), method: :delete, data: { confirm: 'Are you sure?' } %></a>
     <% end %>
